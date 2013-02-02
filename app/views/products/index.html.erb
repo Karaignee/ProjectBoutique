@@ -1,0 +1,22 @@
+<div class="page-header">
+  <h1>All Products</h1>
+  <h5>Browse through our collection or use the search function for particular items</h5>
+</div>
+
+
+
+<%= form_tag products_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search_query, params[:search_query] %>
+      <%= select_tag :search_by, options_for_select([['All', 'all'], ['Name', 'name'], ['Category', 'category'], ['Designer', 'designer']], params[:search_by]) %>
+      <%= submit_tag "Search", :name => nil, :class => 'btn' %>
+    </p>
+<% end %>
+
+<%= render 'products/table' %>
+
+<br />
+
+<% if not current_user or  current_user[:level] == 1 %>
+  <%= link_to 'New Product', new_product_path %>
+<% end %>

@@ -1,0 +1,29 @@
+
+<%= form_tag sessions_path do %>
+
+
+
+<table>
+
+  <tr>
+    <td><div class="field pull-left">
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+    </div>
+    <div class="field pull-right">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div></td>
+
+
+  </tr>
+  <tr>
+    <td colspan="2">
+    <div class="actions" style="text-align: right;">
+      <%= submit_tag 'Login' %>
+    </div>
+    </td>
+  </tr>
+</table>
+
+<% end %>

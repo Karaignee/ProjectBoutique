@@ -1,0 +1,22 @@
+<div class="product-table">
+  <% @products.each do |product| %>
+    <div class="product-item row-fluid">
+      <div class="span3"><%= link_to image_tag("Products/" + product.id.to_s + ".jpg", :size => "120x160"), product %></div>
+      <div class="span9" style="padding-top: 5px;">
+        <div class="product-line"><i>Name: </i> <%= product.name %> </div>
+        <div class="product-line"><i>Designer: </i> <%= product.designer %> </div>
+        <div class="product-line"><i>Category: </i> <%= product.category %> </div>
+        <div class="product-line"><i>Description: </i> <%= product.description %> <%= link_to "Read More", product %></div>
+        
+        <% if current_user %>
+          <%= button_to 'Add to Cart', line_items_path(:product_id => product), :class => 'btn' %>
+            <a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.swanfield.com&media=http%3A%2F%2Fswanfield.com%2Fproducts%2F1" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" /></a>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://www.swanfield.com">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            <div class="fb-like" data-href="http://www.swanfield.com" data-send="true" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

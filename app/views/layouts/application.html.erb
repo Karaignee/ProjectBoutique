@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Swanfield Boutique</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top" style="height: 100px;">
+      <div class="navbar-inner" style="padding-left: 20px;">
+        <%= link_to "Swanfield Boutique", home_path, :class => "brand pull-left" %>
+        <div class="container" style="height: 100px;">
+          <!--remove localhost and change to Link To tag-->
+          <ul class="nav pull-right">
+            <% if current_user%>
+              <% if current_user[:level] == 1 %>
+                <li> <%= link_to "Admin", users_path %> </li>
+              <% end %>
+              <li> <%= link_to "#{current_user.profile_name}'s account", settings_path %> </li>
+              <li> <%= link_to "Shopping Bag", :controller => 'carts', :action => 'your_cart' %> </li>
+              <li> <%= link_to "Logout", logout_path %> </li>
+            <% else %>
+              <li> <%= link_to "Register", new_user_path %> </li>
+              <li style="padding:12px;"> <%= render "sessions/new" %> </li>
+            <% end %>
+          </ul>
+          
+          <ul class="nav pull-left">
+            <li> <%= link_to "All Products", products_path %> </li>
+            <% if current_user and current_user[:level] == 1 %>
+              <li> <%= link_to "Add a New Product", new_product_path %> </li>
+              <li> <%=  link_to "Orders", orders_path %></li>
+            <% else %>
+              <li></li>
+            <% end %>
+           </ul>
+        </div>
+      </div>
+    </div>
+    <div class="container" style="margin-top: 90px;">
+      <div class="row">
+        <div class="span8">
+          <% flash.each do |type, message| %>
+              <div class="alert <%= flash_class type %>">
+                <button class="close" data-dismiss="alert">x</button>
+                <%= message %>
+              </div>
+          <% end %>
+          <% if current_user and :path == '/home/index' %>  <!--add conditional code so this only shows up on the home page this is wrong-->
+
+          <h2> Welcome back to Swanfield! </h2>
+              <p> the last time you were here...</p>
+              <!-- put in code to show previous purchases if any -->
+
+          <% end %>
+
+          <%= yield %>
+
+        </div>
+        <div class="span4">
+          <div class="cart-block">
+            <% if current_user %>
+            <%= render 'carts/show' %>
+            <% else %>
+                <h6>Login to Swanfield</h6>
+            <%= render 'sessions/new' %>
+                <p>Joining is quick and easy, and it is FREE!</p>
+            <% end %>
+          </div>
+
+          <div>
+            <a class="twitter-timeline"  href="https://twitter.com/swanfield" data-widget-id="279957117404844032">Tweets by @swanfield</a>
+            <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
+            <script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
+            <div id="fb-root"></div>
+            <script>(function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=102032276508451";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+          </div>
+        </div>
+      </div>
+     </div>
+     
+    <footer class="modal-footer">
+      <div class="container">
+        <div class="pull-left">
+        <span>Social Media</span>
+        <ul style="list-style: none;">
+        <li><a href="https://twitter.com/swanfield" class="twitter-follow-button" data-show-count="false">Follow @swanfield</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></li>
+        <li><div class="fb-follow" data-href="https://www.facebook.com/swanfield " data-layout="button_count" data-show-faces="true" data-width="450"></div></li>
+        <li><a href="http://pinterest.com/USERNAME/"><img src="http://passets-lt.pinterest.com/images/about/buttons/pinterest-button.png" width="80" height="28" alt="Follow Me on Pinterest" /></a></li>
+        </ul>
+        </div>
+        <div class="pull-right">
+          <strong>contact us</strong>
+          <ul style="list-style: none;">
+            <li><b>Email:</b> <a href="mailto:info@swanfield.com" alt="email">info@swanfield.com</a></li>
+            <li><b>Telephone:</b><a href="tel:012222222" alt="tel"> 01 222 2222</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+</body>
+</html>

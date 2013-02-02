@@ -1,0 +1,24 @@
+
+<h3>In your Bag...</h3>
+<% if current_cart.line_items.empty? %>
+    <b>Your shopping bag is Empty!</b>
+<% end %>
+<ul style="list-style: none;">
+  <% for item in current_cart.line_items %>
+    <li><%= item.quantity %> &times; <%=item.product.name %></li>
+    <li><span> @</span> <%= number_to_currency(item.product.price, :unit => '&euro;', :precision => 2) %><span> each</span>
+      <%= link_to "delete", item, method: :delete, confirm: 'Are you sure you want to delete this from your bag?', :class => 'cart-btn btn-warning btn' %></li>
+      <hr />
+  <% end %>
+</ul>
+
+<hr />
+
+<div>
+  <strong>Total: <%= number_to_currency(current_cart.total_price, :unit => '&euro;', :precision => 2) %></strong>
+  <!-- put in a checkout button here-->
+
+</div>
+
+<%= link_to "Checkout", new_order_path, method: :get, :class => 'cart-btn btn-info btn' %>
+<%= link_to "Empty Bag", current_cart, method: :delete, confirm: 'Are you sure you want to empty your bag?', :class => 'cart-btn btn-inverse btn' %>

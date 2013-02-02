@@ -1,0 +1,10 @@
+<h1>Settings</h1>
+<p>you can update your details here</p>
+
+<% if current_user %>
+
+   <%= render 'form' %>
+<% else %>
+
+    <p>You must log in to do that </p>
+<% end %>

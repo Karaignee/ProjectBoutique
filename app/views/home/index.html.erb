@@ -1,0 +1,45 @@
+<h1>Swanfield Boutique</h1>
+<% if current_user %>
+
+    <h3>Welcome Back </h3>
+    <% if @user.first_name %>
+    <marquee><big>Hello <%= @user.first_name %> !</big></marquee>
+        <% else %>
+    <span>Hello user with profile name: <%= @user.profile_name %></span>
+        <% end %>
+    <br />
+    <br />
+    <hr />
+    <em>Last time you were here would show the last order if it worked, but its not working</em>
+
+
+
+    <br />
+    <hr />
+<% end %>
+
+<div>
+  <%= render 'products/table' %>
+</div>
+
+
+        <div>
+            <h3>About Swanfield</h3>
+              <p>
+                Swanfield is a collective of independent designers with a focus on womenswear.
+                For a number of years we have been working out of pop up shops and markets and we now welcome you to
+                our online store!!!</p>
+              <p>With the launch of our online store, Swanfield Boutique is our home base in between pop-up events and
+                a platform for our designers to sell their wares and promote their events. </p>
+
+              <p>If you are a designer and are interested in working with us, to promote work or events, to collaborate
+                with other designers in our community or to sell beautiful, quality womenswear, please contact the
+                Swanfield Community!
+              </p>
+
+            <p> If you love quirky, independent and customisable fashion, jewellery and art, please click on All Products
+          and browse through our selection and register to join and shop.   </p>
+          <br />
+          <br />
+         </div>
+

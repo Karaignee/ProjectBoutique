@@ -1,0 +1,26 @@
+<%= simple_form_for(@order) do |f| %>
+  <%= f.error_notification %>
+
+   <h2>You wish to buy</h2>
+    <div class="cart-block" >
+    <p>
+        <%= render @cart.line_items %>
+         <hr />
+         <strong>Total</strong> <span>&nbsp;<%= number_to_currency(@cart.total_price, :unit => '&euro;') %></span>
+    </p>
+    </div>
+  <div class="form-inputs">
+    <%= f.input :name, size: 40 %>
+    <%= f.hint 'No special characters, please!' %>
+    <%= f.input :address, rows: 3, cols: 40 %>
+    <%= f.input :email, size: 40 %>
+    <%= f.hint 'Must be a valid email!' %>
+    <%= f.input :pay_type, :collection => Order.list,  prompt: 'Select a Payment type' %>
+    <%= f.hint 'Select a payment type' %>
+  </div>
+
+     <!-- put code in here to pull items from cart -->
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

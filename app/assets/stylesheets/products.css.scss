@@ -1,0 +1,27 @@
+// Place all the styles related to the Users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-table {
+	padding-right: 20px;
+}
+
+.product-item {
+	margin-bottom: 10px;
+	padding: 5px 15px 5px 5px;
+	border: 1px solid #ddd;
+	
+	border-radius: 5px;
+}
+
+.product-line {
+	margin-bottom: 3px;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #eee;
+	
+	font-size: 13px;
+}
+
+.product-item .button_to {
+	margin: 0;
+}

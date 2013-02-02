@@ -1,0 +1,13 @@
+<div>
+  <h1>Hello, <%= @user.first_name %> !</h1>
+  <span>E-mail: <%= @user.email %></span>
+</div>
+
+    <% if @orders  %>
+    <% @orders.each do |order| %>
+    <div class="well">
+      <%= order.line_items %>
+      <hr />
+    </div>
+    <% end %>
+<% end %>

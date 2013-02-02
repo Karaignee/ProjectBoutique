@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @voucher.name %>
+</p>
+
+<p>
+  <b>String:</b>
+  <%= @voucher.string %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%= @voucher.amount %>
+</p>
+
+<p>
+  <b>Voucher:</b>
+  <%= @voucher.voucher_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_voucher_path(@voucher) %> |
+<%= link_to 'Back', vouchers_path %>

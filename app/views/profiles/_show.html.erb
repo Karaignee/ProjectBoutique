@@ -1,0 +1,12 @@
+<strong>Hello, <em><%= @user.first_name %> !</em></strong><span>E-mail: <%= @user.email %></span>
+<span>previous orders</span>
+
+<% if @orders  %>
+    <% @orders.each do |order| %>
+        <div class="well">
+          <%= order.line_items %>
+          <hr />
+        </div>
+    <% end %>
+<% end %>
+

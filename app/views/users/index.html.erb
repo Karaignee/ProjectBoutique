@@ -1,0 +1,28 @@
+<div class="page-header">
+  <h1>All Users</h1>
+</div>
+
+<table id="user-table" class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>User Level</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td class="user-level-col">
+          <%= form_tag "#{users_path}/#{user.id}", :method => 'put' do %>
+            <%= text_field_tag :level, user.level, :class => 'user-level-input' %>
+            <%= submit_tag "Update", :name => nil, :class => 'btn' %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div>
+</div>

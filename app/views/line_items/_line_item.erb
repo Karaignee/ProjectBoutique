@@ -1,0 +1,5 @@
+<div>
+  <span><%= line_item.quantity %> &nbsp; &times; &nbsp;&nbsp;  </span>
+  <span><%= line_item.product.name %></span>
+  <b><%= number_to_currency(line_item.total_price, :unit => '&euro;') %></b>
+</div>

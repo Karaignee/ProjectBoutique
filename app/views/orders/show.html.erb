@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+<h3>Your Order Details</h3>
+
+<p>
+  <b>User Id:</b>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @order.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @order.address %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @order.email %>
+</p>
+
+<p>
+  <b>Pay type:</b>
+  <%= @order.pay_type %>
+</p>
+
+<p>
+  <b>Your Order Details are:</b> <br />
+   <span>Order Id: &nbsp; &nbsp; #</span><%= @order.id %>
+  <% @order.line_items.each do |line_item| %>
+    <ul>
+
+        <li><%= line_item.product.name %> &times; &nbsp;<%= line_item.quantity %> @ <%= number_to_currency(line_item.product.price, :unit => '&euro;', :precision => 2) %></li>
+
+
+    </ul>
+
+    <% end %>
+
+
+</p>
+<!--link to current cart -->
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
+<!--procedd to process payment-->
+

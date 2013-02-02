@@ -1,0 +1,31 @@
+<h1>You Must Log in to Continue</h1>
+<%= form_tag sessions_path do %>
+
+
+
+<table>
+
+  <tr>
+    <td><div class="field">
+      <%= label_tag :email %>
+      <%= text_field_tag :email %>
+    </div>
+    </td>
+   </tr>
+  <tr>
+    <td><div class="field">
+      <%= label_tag :password %>
+      <%= password_field_tag :password %>
+    </div></td>
+
+  </tr>
+  <tr>
+    <td colspan="2">
+    <div class="actions" style="text-align: right;">
+      <%= submit_tag 'Login' %>
+    </div>
+    </td>
+  </tr>
+</table>
+
+<% end %>
